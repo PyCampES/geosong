@@ -1,0 +1,8 @@
+fastapi
+geoalchemy2
+geojson_pydantic
+ipdb
+sqlalchemy
+uvicorn[standard]
+pytest
+requests
