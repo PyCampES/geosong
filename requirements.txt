@@ -4,8 +4,12 @@
 #
 #    pip-compile
 #
+anyio==3.5.0
+    # via jupyter-server
 argon2-cffi==21.3.0
-    # via notebook
+    # via
+    #   jupyter-server
+    #   notebook
 argon2-cffi-bindings==21.2.0
     # via argon2-cffi
 asttokens==2.0.5
@@ -14,6 +18,8 @@ attrs==21.4.0
     # via
     #   fiona
     #   jsonschema
+babel==2.9.1
+    # via jupyterlab-server
 backcall==0.2.0
     # via ipython
 beautifulsoup4==4.11.1
@@ -24,8 +30,11 @@ certifi==2021.10.8
     # via
     #   fiona
     #   pyproj
+    #   requests
 cffi==1.15.0
     # via argon2-cffi-bindings
+charset-normalizer==2.0.12
+    # via requests
 click==8.1.2
     # via
     #   click-plugins
@@ -44,6 +53,7 @@ defusedxml==0.7.1
 entrypoints==0.4
     # via
     #   jupyter-client
+    #   jupyterlab-server
     #   nbconvert
 executing==0.8.3
     # via stack-data
@@ -53,6 +63,10 @@ fiona==1.8.21
     # via geopandas
 geopandas==0.10.2
     # via -r requirements.in
+idna==3.3
+    # via
+    #   anyio
+    #   requests
 ipykernel==6.13.0
     # via
     #   ipywidgets
@@ -63,6 +77,7 @@ ipython==8.2.0
     # via
     #   ipykernel
     #   ipywidgets
+    #   jupyterlab
 ipython-genutils==0.2.0
     # via
     #   ipywidgets
@@ -73,23 +88,43 @@ jedi==0.18.1
     # via ipython
 jinja2==3.1.1
     # via
+    #   jupyter-server
+    #   jupyterlab
+    #   jupyterlab-server
     #   nbconvert
     #   notebook
+json5==0.9.6
+    # via jupyterlab-server
 jsonschema==4.4.0
-    # via nbformat
+    # via
+    #   jupyterlab-server
+    #   nbformat
 jupyter-client==7.2.2
     # via
     #   ipykernel
+    #   jupyter-server
     #   nbclient
     #   notebook
 jupyter-core==4.9.2
     # via
     #   jupyter-client
+    #   jupyter-server
+    #   jupyterlab
     #   nbconvert
     #   nbformat
     #   notebook
+jupyter-server==1.16.0
+    # via
+    #   jupyterlab
+    #   jupyterlab-server
+    #   nbclassic
+    #   notebook-shim
+jupyterlab==3.3.4
+    # via -r requirements.in
 jupyterlab-pygments==0.2.2
     # via nbconvert
+jupyterlab-server==2.12.0
+    # via jupyterlab
 jupyterlab-widgets==1.1.0
     # via ipywidgets
 markupsafe==2.1.1
@@ -104,13 +139,18 @@ mistune==0.8.4
     # via nbconvert
 munch==2.5.0
     # via fiona
+nbclassic==0.3.7
+    # via jupyterlab
 nbclient==0.6.0
     # via nbconvert
 nbconvert==6.5.0
-    # via notebook
+    # via
+    #   jupyter-server
+    #   notebook
 nbformat==5.3.0
     # via
     #   ipywidgets
+    #   jupyter-server
     #   nbclient
     #   nbconvert
     #   notebook
@@ -122,13 +162,18 @@ nest-asyncio==1.5.5
     #   notebook
 notebook==6.4.10
     # via
-    #   -r requirements.in
+    #   nbclassic
     #   widgetsnbextension
+notebook-shim==0.1.0
+    # via nbclassic
 numpy==1.22.3
     # via pandas
 packaging==21.3
     # via
     #   ipykernel
+    #   jupyter-server
+    #   jupyterlab
+    #   jupyterlab-server
     #   nbconvert
 pandas==1.4.2
     # via geopandas
@@ -141,7 +186,9 @@ pexpect==4.8.0
 pickleshare==0.7.5
     # via ipython
 prometheus-client==0.14.1
-    # via notebook
+    # via
+    #   jupyter-server
+    #   notebook
 prompt-toolkit==3.0.29
     # via ipython
 psutil==5.9.0
@@ -169,33 +216,47 @@ python-dateutil==2.8.2
     #   jupyter-client
     #   pandas
 pytz==2022.1
-    # via pandas
+    # via
+    #   babel
+    #   pandas
 pyzmq==22.3.0
     # via
     #   jupyter-client
+    #   jupyter-server
     #   notebook
+requests==2.27.1
+    # via jupyterlab-server
 send2trash==1.8.0
-    # via notebook
+    # via
+    #   jupyter-server
+    #   notebook
 shapely==1.8.1.post1
     # via geopandas
 six==1.16.0
     # via
+    #   asttokens
     #   bleach
     #   fiona
     #   munch
     #   python-dateutil
+sniffio==1.2.0
+    # via anyio
 soupsieve==2.3.2.post1
     # via beautifulsoup4
 stack-data==0.2.0
     # via ipython
 terminado==0.13.3
-    # via notebook
+    # via
+    #   jupyter-server
+    #   notebook
 tinycss2==1.1.1
     # via nbconvert
 tornado==6.1
     # via
     #   ipykernel
     #   jupyter-client
+    #   jupyter-server
+    #   jupyterlab
     #   notebook
     #   terminado
 traitlets==5.1.1
@@ -205,6 +266,7 @@ traitlets==5.1.1
     #   ipywidgets
     #   jupyter-client
     #   jupyter-core
+    #   jupyter-server
     #   matplotlib-inline
     #   nbclient
     #   nbconvert
@@ -213,12 +275,16 @@ traitlets==5.1.1
     #   traittypes
 traittypes==0.2.1
     # via ipyleaflet
+urllib3==1.26.9
+    # via requests
 wcwidth==0.2.5
     # via prompt-toolkit
 webencodings==0.5.1
     # via
     #   bleach
     #   tinycss2
+websocket-client==1.3.2
+    # via jupyter-server
 widgetsnbextension==3.6.0
     # via ipywidgets
 xyzservices==2022.4.0
