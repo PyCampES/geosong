@@ -2,6 +2,12 @@ import musicbrainzngs
 
 def musibrains(string):
     # TODO First revision of the function, that uses search_artists and search_works, could be interesting to get data from recording that have the genres of the song
+    # Some interesting/useful links:
+    # - https://musicbrainz.org/recording/3fad33de-9748-4b97-9506-3c1ab2f67529
+    # - https://wiki.musicbrainz.org/MusicBrainz_API
+    # - https://pypi.org/project/musicbrainzngs/
+    # - https://python-musicbrainzngs.readthedocs.io/en/v0.7.1/usage/
+    # - https://jsonformatter.curiousconcept.com/
 
     # If you plan to submit data, authenticate
     #musicbrainzngs.auth("user", "password")
