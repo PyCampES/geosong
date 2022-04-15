@@ -1,0 +1,165 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "date": "2022-04-15T09:10:35Z",
+        "username": "@juanluisback",
+        "geosong": {
+          "title": "U Can't Touch This",
+          "artist": "MC Hammer",
+          "year": 1990,
+          "genre": "hip hop"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.71337890625,
+          39.825413103424786
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "date": "2022-04-15T09:10:35Z",
+        "username": "@randomdude",
+        "geosong": {
+          "title": "Sandstorm",
+          "artist": "Darude",
+          "year": 2000,
+          "genre": "dance"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.92236328125,
+          40.3130432088809
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "date": "2022-04-15T09:10:35Z",
+        "username": "@barackobama",
+        "geosong": {
+          "title": "Free",
+          "artist": "Melodie MC",
+          "year": 1999,
+          "genre": "dance"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.6694335937500004,
+          40.59727063442024
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "date": "2022-04-15T09:10:35Z",
+        "username": "@anamilan",
+        "geosong": {
+          "title": "Around the World",
+          "artist": "Daft Punk",
+          "year": 2009,
+          "genre": "dance"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.076171875,
+          40.1452892956766
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "date": "2022-04-15T09:10:35Z",
+        "username": "@juanluisback",
+        "geosong": {
+          "title": "Liar",
+          "artist": "Queen",
+          "year": 1973,
+          "genre": "rock"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.724609375,
+          41.902277040963696
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "date": "2022-04-15T09:10:35Z",
+        "username": "@pedrosanchez",
+        "geosong": {
+          "title": "Ecuador",
+          "artist": "Sash!",
+          "year": 2008,
+          "genre": "dance"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.98828125,
+          42.049292638686836
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "date": "2022-04-15T09:10:35Z",
+        "username": "@cristina",
+        "geosong": {
+          "title": "Lost in Hollywood",
+          "artist": "Rainbow",
+          "year": 1979,
+          "genre": "rock"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.39501953125,
+          42.00032514831621
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "date": "2022-04-15T09:10:35Z",
+        "username": "@juanluisback",
+        "geosong": {
+          "title": "Untravel",
+          "artist": "Rival Consoles",
+          "year": 2018,
+          "genre": "weird"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.109375,
+          41.376808565702355
+        ]
+      }
+    }
+  ]
+}
