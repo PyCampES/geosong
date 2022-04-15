@@ -1,6 +1,8 @@
 import musicbrainzngs
 
 def musibrains(string):
+    # TODO First revision of the function, that uses search_artists and search_works, could be interesting to get data from recording that have the genres of the song
+
     # If you plan to submit data, authenticate
     #musicbrainzngs.auth("user", "password")
     
@@ -12,11 +14,8 @@ def musibrains(string):
     # If you are connecting to a different server
     #musicbrainzngs.set_hostname("beta.musicbrainz.org")
     
-    #_song = "I used @Shazam to discover Strange And Beautiful (I'll Put A Spell On You) by Aqualung."
-    #_song = "I used Shazam to discover As It Was by Harry Styles."
-    _song = string
-    
     # clean string
+    _song = string
     _song = _song.replace("I used Shazam to discover ","")
     _song = _song.replace("I used @Shazam to discover ","")
     
@@ -24,6 +23,8 @@ def musibrains(string):
     _song = _song.split(" by ")
     _song_name = _song[0]
     _composer = _song[1]
+
+    # define variables
     _artist_id = None
     _work_id = None
     _genre = []
