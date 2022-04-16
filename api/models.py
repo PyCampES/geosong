@@ -5,21 +5,7 @@ from database import Base
 
 
 class GeoSong(Base):
-    """A geolocated song
-
-    {
-         "type": "Feature",
-         "properties": {
-           "date": "2022-04-15T09:10:35Z",
-           "username": "@juanluisback",
-           "geosong": {
-             "title": "U Can't Touch This",
-             "artist": "MC Hammer",
-             "year": 1990,
-             "genre": "hip hop"
-           }
-         },
-    """
+    """A geolocated song"""
 
     __tablename__ = "geosongs"
 

@@ -1,7 +1,6 @@
 from sqlalchemy import create_engine, inspect
 from sqlalchemy.event import listen
 
-# from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.declarative import as_declarative
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import select, func
