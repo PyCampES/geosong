@@ -11,11 +11,13 @@ def musibrains(string):
 
     # If you plan to submit data, authenticate
     #musicbrainzngs.auth("user", "password")
+    musicbrainzngs.auth("blackhold", "qHu6JXtYzAmia4QvE2zndpjgg")
     
     # Tell musicbrainz what your app is, and how to contact you
     # (this step is required, as per the webservice access rules
     # at http://wiki.musicbrainz.org/XML_Web_Service/Rate_Limiting ) 
-    musicbrainzngs.set_useragent("geosong", "0.1", "pycamp-es2022")
+    #musicbrainzngs.set_useragent("geosong", "0.1", "pycamp-es2022")
+    musicbrainzngs.set_useragent("geosong", "2", "pycamp-es2022")
     
     # If you are connecting to a different server
     #musicbrainzngs.set_hostname("beta.musicbrainz.org")
@@ -38,31 +40,23 @@ def musibrains(string):
     # search and test artist name
     if _composer[-1:] == ".":
         _composer = _composer[:-1]
-    
+   
     #print (f"Searching for artist {_composer}")
-    _result = musicbrainzngs.search_artists(_composer)
-    
-    _artists = _result['artist-list']
-    for _artist in _artists:
+    _result = musicbrainzngs.search_artists(artist=_composer, type="group")
+    for _artist in _result['artist-list']:
         if _artist['name'] == _composer:
             _artist_id = _artist['id']
-            #print ("ID: " + _artist['id'])
-            #print ("Name: " + _artist['name'])
-            #print (_artist)
-            #print ("-------------------------")
-    
-            # get genre
+
+            # get artist genres
             _tag_list = _artist['tag-list']
             for _tag in _tag_list:
                 _genre.append(_tag['name'])
-    
-    #print ("***********************************")
+
     # search and test song name
     #print (f"Searching for work/song {_song_name}")
     _result = musicbrainzngs.search_works(_song_name)
     
-    _works = _result['work-list']
-    for _work in _works:
+    for _work in _result['work-list']:
         if _work['title'] == _song_name:
             _artists = _work['artist-relation-list']
             for _artist in _artists:
@@ -72,9 +66,16 @@ def musibrains(string):
                     #print ("Title: " + _work['title'])  
                     #print (_work)
                     #print ("-------------------------")
-    
-    
-    if _work_id != None: 
+            _recordings = _work['recording-relation-list']
+            #for _recording in _recordings:
+                #print (">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+                #print (_recording['recording']['id'])
+                #_recording = musicbrainzngs.get_recording_by_id(_recording['recording']['id'])
+                #print (_recording)
+                #print (">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+
+
+    if _work_id != None:
         #print ("***********************************")
         #_result = musicbrainzngs.get_work_by_id(_work_id)
         #print (_result)
@@ -85,14 +86,10 @@ def musibrains(string):
     else:
         _data = None
     
-    # TODO search through it
-    #print ("RAMSTEIN")
-    #_recording = "3fad33de-9748-4b97-9506-3c1ab2f67529"
-    
     return _data
 
 # how to use this function (uncomment for testing)
 #_song = "I used @Shazam to discover Strange And Beautiful (I'll Put A Spell On You) by Aqualung."
-#_song = "I used Shazam to discover As It Was by Harry Styles."
-#_output = musibrains(_song)
-#print (_output)
+_song = "I used Shazam to discover As It Was by Harry Styles."
+_output = musibrains(_song)
+print (_output)
