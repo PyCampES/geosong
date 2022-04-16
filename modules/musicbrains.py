@@ -11,7 +11,6 @@ def musibrains(string):
 
     # If you plan to submit data, authenticate
     #musicbrainzngs.auth("user", "password")
-    musicbrainzngs.auth("blackhold", "qHu6JXtYzAmia4QvE2zndpjgg")
     
     # Tell musicbrainz what your app is, and how to contact you
     # (this step is required, as per the webservice access rules
