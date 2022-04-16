@@ -55,9 +55,9 @@ def test_create(test_db):
             "song_metadata": {"title": "Verdura"},
             "username": "gilgamezh",
             "point": {
-                "type": "Point",
                 "coordinates": [-3.71337890625, 39.825413103424786],
             },
+            "bbox": [1, 2, 3, 4]
         },
     )
     assert response.status_code == 201
