@@ -6,3 +6,4 @@ sqlalchemy
 uvicorn[standard]
 pytest
 requests
+shapely
