@@ -25,7 +25,7 @@ class GeoSongBase(BaseModel):
     date: datetime.datetime
     song_metadata: SongMetadata
     point: Optional[Point]
-    bbox: conlist(float, min_items=4,max_items=4)
+    bbox: conlist(float, min_items=4, max_items=4)
     username: str
 
     def to_orm(self):
@@ -82,5 +82,5 @@ class PointFeature(Feature[Point, Props]):
                 from_source=obj.from_source or False,
             ),
             id=obj.id,
-            bbox=bbox
+            bbox=bbox,
         )

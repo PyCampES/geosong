@@ -25,7 +25,8 @@ listen(engine, "connect", load_spatialite)
 
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-@pytest.fixture(scope="session")
+
+@pytest.fixture
 def test_db():
     Base.metadata.create_all(bind=engine)
     yield
@@ -39,10 +40,10 @@ def override_get_db():
     finally:
         db.close()
 
+
 app.dependency_overrides[get_db] = override_get_db
 
 client = TestClient(app)
-
 
 
 def test_create(test_db):
@@ -57,7 +58,7 @@ def test_create(test_db):
             "point": {
                 "coordinates": [-3.71337890625, 39.825413103424786],
             },
-            "bbox": [1, 2, 3, 4]
+            "bbox": [1, 2, 3, 4],
         },
     )
     assert response.status_code == 201
@@ -66,10 +67,29 @@ def test_create(test_db):
     assert pydantic_geosong.username == "gilgamezh"
     assert pydantic_geosong.song_metadata.title == "Verdura"
     assert pydantic_geosong.point.coordinates == (-3.71337890625, 39.825413103424786)
-    database.close()
 
 
-def test_get_geosongs():
+def test_create_without_point(test_db):
+    database = TestingSessionLocal()
+    assert database.query(models.GeoSong).count() == 0
+    response = client.post(
+        "/geosong/",
+        json={
+            "date": "2022-04-15T19:07:38.272349",
+            "song_metadata": {"title": "Fruta"},
+            "username": "nacho",
+            "bbox": [1, 2, 3, 4],
+        },
+    )
+    assert response.status_code == 201
+    geosong = database.query(models.GeoSong).first()
+    pydantic_geosong = GeoSong.from_orm(geosong)
+    assert pydantic_geosong.username == "nacho"
+    assert pydantic_geosong.song_metadata.title == "Fruta"
+    assert pydantic_geosong.point.coordinates == (2.0, 3.0)
+
+
+def test_get_geosongs(test_db):
     client.post(
         "/geosong/",
         json={
