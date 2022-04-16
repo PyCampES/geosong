@@ -2,7 +2,7 @@ import datetime
 from typing import Optional
 
 from geoalchemy2.shape import to_shape
-from geojson_pydantic import Point
+from geojson_pydantic import Feature, Point, FeatureCollection
 from pydantic import BaseModel
 
 
@@ -13,16 +13,24 @@ class SongMetadata(BaseModel):
     genre: Optional[str]
 
 
+class Props(BaseModel):
+    song_metadata: SongMetadata
+    username: str
+    date: datetime.datetime
+
 
 class GeoSongBase(BaseModel):
     date: datetime.datetime
     song_metadata: SongMetadata
-    point: Feature[Point]
+    point: Point
     username: str
 
     def to_orm(self):
         tmp = self.dict()
-        tmp['point'] = f'SRID=4326;POINT({self.point.coordinates[0]} {self.point.coordinates[1]})'
+        point = (
+            f"SRID=4326;POINT({self.point.coordinates[0]} {self.point.coordinates[1]})"
+        )
+        tmp["point"] = point
         return tmp
 
     @classmethod
@@ -43,3 +51,20 @@ class GeoSong(GeoSongBase):
     class Config:
         orm_mode = True
 
+
+class PointFeature(Feature[Point, Props]):
+    class Config:
+        orm_mode = True
+
+    @classmethod
+    def from_orm(cls, obj):
+        geom = to_shape(obj.point)
+        return PointFeature(
+            geometry=Point(coordinates=[geom.x, geom.y]),
+            properties=Props(
+                song_metadata=obj.song_metadata,
+                username=obj.username,
+                date=obj.date,
+            ),
+            id=obj.id,
+        )

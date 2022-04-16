@@ -5,6 +5,7 @@ import schemas
 from database import SessionLocal, engine
 from fastapi import Depends, FastAPI
 from sqlalchemy.orm import Session
+from geojson_pydantic import Feature, Point, FeatureCollection
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -26,7 +27,6 @@ def create_geosong(geosong: schemas.GeoSongCreate, database: Session = Depends(g
     return crud.create_geosong(database=database, geosong=geosong)
 
 
-@app.get("/geosongs/", response_model=list[schemas.GeoSong])
+@app.get("/geosongs/", response_model=FeatureCollection)
 def read_geosongs(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    geosongs = crud.get_geosongs(db, skip=skip, limit=limit)
-    return geosongs
+    return crud.get_geosongs_feature_collection(db, skip=skip, limit=limit)
