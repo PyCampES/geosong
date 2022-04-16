@@ -1,5 +1,5 @@
 from geoalchemy2 import Geometry
-from sqlalchemy import JSON, Column, DateTime, Integer, String
+from sqlalchemy import JSON, Column, DateTime, Integer, String, Boolean, Float
 
 from database import Base
 
@@ -14,3 +14,5 @@ class GeoSong(Base):
     song_metadata = Column(JSON)
     point = Column(Geometry("POINT", srid=4326, management=True))
     username = Column(String)
+    from_source = Column(Boolean)
+    bbox = Column(String)
