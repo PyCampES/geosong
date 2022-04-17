@@ -13,7 +13,7 @@ def search_all_recordings(song_title, max_num=1_000):
     recordings = []
     offset = 0
 
-    while len(recordings) < recordings:
+    while len(recordings) < max_num:
         res = musicbrainzngs.search_recordings(
             f'"{song_title}"', limit=100, offset=offset
         )
