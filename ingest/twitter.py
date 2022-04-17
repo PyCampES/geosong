@@ -32,14 +32,14 @@ def get_song_attributes(text):
 
 
 def get_tweet_info(maxiter=100, query="I used Shazam", *, client):
-    geo_tweets = []
-
-    users = {}
-    places = {}
-
     next_token = None
 
     for iteration in range(maxiter):
+        geo_tweets = []
+
+        users = {}
+        places = {}
+
         resp = client.search_recent_tweets(
             query,
             max_results=100,  # Maximum allowed
@@ -50,20 +50,20 @@ def get_tweet_info(maxiter=100, query="I used Shazam", *, client):
             next_token=next_token,
         )
 
-        geo_tweets.extend([t for t in resp.data if t.geo])
+        geo_tweets = [t for t in resp.data if t.geo]
 
         logger.info("Iteration: %d", iteration)
         logger.debug("Length of geo tweets: %d", len(geo_tweets))
 
-        users |= {u.id: u for u in resp.includes.get("users", [])}
-        places |= {p.id: p for p in resp.includes.get("places", [])}
+        users = {u.id: u for u in resp.includes.get("users", [])}
+        places = {p.id: p for p in resp.includes.get("places", [])}
 
         if "next_token" in resp.meta:
             next_token = resp.meta["next_token"]
         else:
             break
 
-    return geo_tweets, users, places
+        yield geo_tweets, users, places
 
 
 def serialize_tweet(tweet, *, users, places):
