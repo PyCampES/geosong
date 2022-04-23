@@ -139,7 +139,7 @@ mistune==0.8.4
     # via nbconvert
 munch==2.5.0
     # via fiona
-musicbrainzngs==0.7.1
+musicbrainzngs @ git+https://github.com/astrojuanlu/python-musicbrainzngs.git@geosongs-fixes
     # via -r requirements.in
 nbclassic==0.3.7
     # via jupyterlab

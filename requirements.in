@@ -3,4 +3,5 @@ ipyleaflet
 geopandas
 tweepy
 shapely
-musicbrainzngs
+
+git+https://github.com/astrojuanlu/python-musicbrainzngs.git@geosongs-fixes#egg=musicbrainzngs
