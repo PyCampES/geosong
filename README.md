@@ -21,6 +21,8 @@ client.search_all_tweets(
 )
 ```
 
+⚠️ "I used Shazam" sentences are translated! So, searching for the English version will only retrieve a handful of results
+
 ## Development
 
 To install the dependencies:
